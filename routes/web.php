@@ -31,3 +31,7 @@ Route::get('/register', [RegisterController::class, 'create']);
 
 //Chamando a função register do controller register 
 Route::post('/register', [RegisterController::class, 'store']) ->name('register');
+
+Route::get('/dashboard', function () {
+    return "Você está logado";
+});
