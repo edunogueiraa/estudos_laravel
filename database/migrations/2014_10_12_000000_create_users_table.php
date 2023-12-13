@@ -9,7 +9,9 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    
+    //Essa função cria a tabela no banco
+    public function up(): void 
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -25,6 +27,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+    //Essa função destroi a tabela criada
     public function down(): void
     {
         Schema::dropIfExists('users');
