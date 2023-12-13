@@ -13,5 +13,10 @@
         @endauth
 
     </h2>
+
+    <form action="{{ route('logout')}}" method="post">
+        @csrf
+        <button>Sair</button>
+    </form>
 </body>
 </html>

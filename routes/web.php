@@ -32,6 +32,7 @@ Route::get('/register', [RegisterController::class, 'create']);
 //Chamando a função register do controller register 
 Route::post('/register', [RegisterController::class, 'store']) ->name('register');
 
+//Ir para o dashboard
 Route::get('/dashboard', function () {
 
     //Verifica se o usuario não está logado e joga ele para o login
@@ -41,3 +42,6 @@ Route::get('/dashboard', function () {
 
     return view('dashboard');
 });
+
+//Logoute
+Route::post('/logout', [LoginController::class, 'destroy']) ->name('logout');
