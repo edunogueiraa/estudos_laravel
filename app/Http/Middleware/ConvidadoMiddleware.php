@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Auth; //Lembre sempre!
 
+
+
 class ConvidadoMiddleware
 {
     /**
@@ -22,7 +24,6 @@ class ConvidadoMiddleware
         if(Auth::check()) {
             return redirect('/dashboard');
     }
-
         return $next($request);
     }
 }

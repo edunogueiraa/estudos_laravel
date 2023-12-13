@@ -11,11 +11,23 @@
     <form action="{{ route('register') }}" method="post">
         @csrf
         <label for="">Email</label>
-        <input type="email" name="email">
+        <input type="email" name="email" value={{old('email')}}> {{-- Recpera o valor antigo--}}
+        @error('email')
+            <span>{{ $message}}</span>
+        @enderror
+        <br>
         <label for="">Nome</label>
-        <input type="text" name="name">
+        <input type="text" name="name" value={{old('name')}}>
+        @error('name')
+        <span>{{ $message}}</span>
+        @enderror
+        <br>
         <label for="">Senha</label>
-        <input type="password" name="password">
+        <input type="password" name="password" value={{old('password')}}>
+        @error('password')
+        <span>{{ $message}}</span>
+        @enderror
+        <br>
         <button>Enviar</button>
     </form>
 </body>
