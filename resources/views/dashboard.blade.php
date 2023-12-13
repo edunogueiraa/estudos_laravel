@@ -7,5 +7,11 @@
 </head>
 <body>
     <h1>Dashboard</h1>
+    <h2>
+        @auth
+            {{Auth::user()->email}} {{--Só pegas as informações se estiver logado --}}
+        @endauth
+
+    </h2>
 </body>
 </html>

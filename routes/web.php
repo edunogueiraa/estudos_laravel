@@ -33,5 +33,11 @@ Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']) ->name('register');
 
 Route::get('/dashboard', function () {
-    return "Você está logado";
+
+    //Verifica se o usuario não está logado e joga ele para o login
+    if(!Auth::check()) {
+        return redirect('/login');
+    }
+
+    return view('dashboard');
 });
