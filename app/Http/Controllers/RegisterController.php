@@ -9,6 +9,7 @@ use DB; // Manipular o banco
 use Auth; //Operações de autenticação
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 
 
 class RegisterController extends Controller
@@ -41,9 +42,9 @@ class RegisterController extends Controller
             ->withInput(); //Recupera as informações já digitadas
         }*/
 
-        $nome = $request->post('name');
-        $email = $request->email;
-        $password = Hash::make($request->password);
+        //$nome = $request->post('name');
+        //$email = $request->email;
+        //$password = Hash::make($request->password);
 
         /*validação automatica obrigando os campos e também sendo unicos(Parte1)
         $request->validate([
@@ -59,8 +60,19 @@ class RegisterController extends Controller
         ]);*/
 
         
+        $usuario = new User;
+        $usuario->name = $request->post('name');;
+        $usuario->email = $request->email;
+        $usuario->password = Hash::make($request->password);
+        $usuario->save(); //insert eloquent
 
-        //casdastrando se não existir
+        //Fazer o login
+        Auth::login($usuario);
+
+        return redirect('/dashboard');
+
+
+      /*  //casdastrando se não existir
         DB::insert('insert into users(name, email, password) values(?,?,?)', [
             $nome, $email, $password
         ]);
@@ -71,5 +83,6 @@ class RegisterController extends Controller
         }
 
         return "Problema no cadastro";
+        */
     }
 }
